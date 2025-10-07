@@ -1,3 +1,10 @@
+
+{{
+    config(
+        required_tests : None
+    )
+}}
+
 select
     id as payment_id,
     orderid as order_id,
