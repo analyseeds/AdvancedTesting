@@ -1,0 +1,8 @@
+packages:
+  - name: dbt_utils
+    package: dbt-labs/dbt_utils
+    version: 0.7.4
+  - name: dbt_meta_testing
+    package: tnightengale/dbt_meta_testing
+    version: 0.3.6
+sha1_hash: 1d806fc23296596145ee4837372f65c6d6e53389
