@@ -35,6 +35,8 @@ models:
   jaffle_shop:
     staging:
       +required_tests: {"unique.*|not_null": 2}
-      +materialized: view
+      +materialized: table
     marts:
+      +materialized: table
+    intermediate:
       +materialized: table
