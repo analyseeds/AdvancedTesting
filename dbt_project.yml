@@ -38,13 +38,13 @@ models:
     intermediate:
       +materialized: table
 
-vars:
-  dbt_dq_tool_schema: dbt_dbtmf
-  dbt_dq_tool_database: dbtdevelopment
-  dq_tools_enable_store_test_results: true
+#vars:
+#  dbt_dq_tool_schema: dbt_dbtmf
+#  dbt_dq_tool_database: dbtdevelopment
+#  dq_tools_enable_store_test_results: true
 
 
-on-run-start:
-  - '{{ dq_tools.create_table_dq_issue_log() }}'
-flags:
-  require_generic_test_arguments_property: true
+#on-run-start:
+#  - '{{ dq_tools.create_table_dq_issue_log() }}'
+#flags:
+#  require_generic_test_arguments_property: True

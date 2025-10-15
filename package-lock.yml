@@ -5,7 +5,4 @@ packages:
   - name: dbt_meta_testing
     package: tnightengale/dbt_meta_testing
     version: 0.3.6
-  - name: dq_tools
-    package: infinitelambda/dq_tools
-    version: 1.2.2
-sha1_hash: bf22fbceae7fdb1750856d62c9986d25fc6d8b46
+sha1_hash: 1d806fc23296596145ee4837372f65c6d6e53389
