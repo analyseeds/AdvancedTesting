@@ -1,9 +1,7 @@
 
-{{
-    config(
-        required_tests = None
-    )
-}}
+{{ config(
+    required_tests = None
+) }}
 
 select
     id as payment_id,
