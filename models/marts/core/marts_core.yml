@@ -49,6 +49,7 @@ models:
         tests:
           - dollars_spent_greater_than_one:
               group_column: customer_id
+          - greater_than_five_g
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
               row_condition: "order_id is not null"
