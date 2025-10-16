@@ -45,7 +45,7 @@ models:
       - name: order_date
         description: es la fecha en la que se realizó la orden
       - name: amount
-        description: es el monto total de los pagos
+        description: es el monto total de los pagos   
         tests:
           - dollars_spent_greater_than_one:
               group_column: customer_id
@@ -58,4 +58,5 @@ models:
               group_by: [customer_id]
               row_condition: "order_id is not null"
               strictly: false # esto es como añadir un "o igual" al intervalo
+
               
