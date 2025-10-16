@@ -14,8 +14,7 @@ renamed as (
 
     select
         customer_id,
-        CONCAT(first_name,last_name) as full_name,
-        null as null_test
+        CONCAT(first_name,last_name) as full_name
     from 
         customers
 )

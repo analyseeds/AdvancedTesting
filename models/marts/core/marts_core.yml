@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: un cliente por registro
+    columns:
+      - name: customer_id
+        description: es la clave primaria
+        tests:
+          - unique
+          - not_null
+          - dbt_utils.cardinality_equality:
+              field: customer_id
+              to: ref('stg_customers')
+      - name: full_name
+        description: es el nombre y apellidos del cliente
+      - name: first_order_date
+        description: es la fecha de la primera orden, puede ser NULL si ese cliente aún no ordenó
+      - name: most_recent_order_date
+        description: es la fecha de la última orden, puede ser NULL si ese cliente aún no ordenó
+      - name: number_of_orders
+        description: es el número de órdenes que tiene ese cliente
+      - name: lifetime_value
+        description: es el monto total de todos los pagos de todas las órdenes de ese cliente
+  - name: fct_orders
+    description: una orden por registro
+    tests:
+      - dbt_utils.expresion_is_true:
+          expression: "amount >= 0"
+    columns:
+      - name: order_id
+        description: es la clave primaria
+        tests:
+          - unique
+          - not_null
+          - dbt_utils.cardinality_equality:
+              field: order_id
+              to: ref('stg_orders')
+      - name: customer_id
+        description: es la clave foránea de la tabla de clientes
+        tests:
+          - relationships:
+              field: customer_id
+              to: ref('dim_customers')
+      - name: order_date
+        description: es la fecha en la que se realizó la orden
+      - name: amount
+        description: es el monto total de los pagos
+        tests:
+          - dollars_spent_greater_than_one:
+              group_column: order_id
+              
