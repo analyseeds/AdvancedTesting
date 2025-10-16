@@ -25,7 +25,7 @@ models:
   - name: fct_orders
     description: una orden por registro
     tests:
-      - dbt_utils.expresion_is_true:
+      - dbt_utils.expression_is_true:
           expression: "amount >= 0"
     columns:
       - name: order_id
