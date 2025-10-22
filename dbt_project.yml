@@ -38,6 +38,10 @@ models:
     intermediate:
       +materialized: table
 
+tests:
+  jaffle_shop:
+    store_failures: true
+
 #vars:
 #  dbt_dq_tool_schema: dbt_dbtmf
 #  dbt_dq_tool_database: dbtdevelopment
