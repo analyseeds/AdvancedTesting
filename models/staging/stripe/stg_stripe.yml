@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: stg_payments
+    description: un pago por registro
+    columns:
+      - name: payment_id
+        description: es la clave primaria
+        tests:
+          - unique:
+              config:
+                warn_if: ">=10"
+                error_if: ">=100"
+                where: "status = 'success'"
+                limit: 10
+                store_failures: true
+          - not_null
+      - name: order_id
+        description: es la clave foranea de la tabla de órdenes
+        tests:
+          - relationships:
+              field: order_id
+              to: ref('stg_orders')
+      - name: payment_method
+        description: es el métod de pago
+      - name: status
+        description: es el estado del pago
+      - name: amount
+        description: es el monto del pago
+        tests:
+          - assert_dollars_spent_are_greater_than_one:
+              group_by_column: payment_id
+              config:
+                store_failures: true
+      - name: created_at
+        description: es la fecha de creación del registro
+
+    
+              

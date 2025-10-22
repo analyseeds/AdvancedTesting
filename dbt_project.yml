@@ -1,4 +1,3 @@
-
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
@@ -12,17 +11,15 @@ profile: 'default'
 # These configurations specify where dbt should look for different types of files.
 # The `source-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
-source-paths: ["models"]
+model-paths: ["models"]
 analysis-paths: ["analysis"]
 test-paths: ["tests"]
-data-paths: ["data"]
+seed-paths: ["data"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
-
-target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
-    - "target"
-    - "dbt_modules"
+  - "target"
+  - "dbt_modules"
 
 
 # Configuring models
@@ -34,6 +31,24 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   jaffle_shop:
     staging:
-      +materialized: view
+      +materialized: table
+      +required_tests: {"unique.*|not_null": 2}
     marts:
       +materialized: table
+    intermediate:
+      +materialized: table
+
+tests:
+  jaffle_shop:
+    store_failures: true
+
+#vars:
+#  dbt_dq_tool_schema: dbt_dbtmf
+#  dbt_dq_tool_database: dbtdevelopment
+#  dq_tools_enable_store_test_results: true
+
+
+#on-run-start:
+#  - '{{ dq_tools.create_table_dq_issue_log() }}'
+#flags:
+#  require_generic_test_arguments_property: True
