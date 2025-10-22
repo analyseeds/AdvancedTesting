@@ -42,15 +42,15 @@ models:
       - name: order_date
         description: es la fecha en la que se realizó la orden
       - name: amount
-        description: es el monto total de los pagos   
+        description: es el monto total de los pagos
         tests:
           - dollars_spent_greater_than_one:
               group_column: customer_id
           - dbt_expectations.expect_column_values_to_be_between:
-              min_value: 0  
-              max_value: 100 
-              row_condition: "amount is not null" 
-              strictly: false 
+              min_value: 0
+              max_value: 100
+              row_condition: "amount is not null"
+              strictly: false
               config:
                 severity: warn
           - dbt_expectations.expect_column_values_to_be_between:
@@ -62,5 +62,3 @@ models:
               group_by: [customer_id]
               row_condition: "order_id is not null"
               strictly: false # esto es como añadir un "o igual" al intervalo
-
-              
