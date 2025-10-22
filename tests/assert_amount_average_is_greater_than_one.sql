@@ -1,6 +1,7 @@
 {{
     config(
-        enabled = false
+        enabled = false,
+        severtiy: warn
     )
 }}
 
