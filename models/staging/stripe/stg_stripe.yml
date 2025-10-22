@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stg_payments
+    description: un pago por registro
+    columns:
+      - name: payment_id
+        description: es la clave primaria
+        tests:
+          - unique
+          - not_null
+    
+              

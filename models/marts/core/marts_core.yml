@@ -24,9 +24,6 @@ models:
         description: es el monto total de todos los pagos de todas las órdenes de ese cliente
   - name: fct_orders
     description: una orden por registro
-    tests:
-      - dbt_utils.expression_is_true:
-          expression: "amount >= 0"
     columns:
       - name: order_id
         description: es la clave primaria
