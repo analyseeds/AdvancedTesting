@@ -53,7 +53,7 @@ models:
               strictly: false 
               config:
                 severity: warn
-                where: "order_date = current_date" #solo fallará si no cumple la condición del test para el dia de hoy
+                limit: 5
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
               row_condition: "order_id is not null"
